@@ -1,0 +1,96 @@
+body {
+  background-color: #eef2f3;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  height:100vh;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  margin: auto;
+}
+
+.form-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 5px;
+}
+.form-control {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #495057;
+  background: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  outline: none;
+}
+
+.auth-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #4caf50;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-btn:hover {
+  background: #45a049;
+}
+
+.form-link {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-link:hover {
+  text-decoration: underline;
+}
+
+.text-center {
+  text-align: center;
+}
+.error-text {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+.login-error-text {
+  text-align: center;
+  color: red;
+  font-size: 15px;
+  margin-bottom: 7px;
+  margin-top: 5px;
+}
