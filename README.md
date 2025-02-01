@@ -30,7 +30,7 @@ This dashboard allows event organizers to track their event statistics, includin
 ## 🏗️ Installation & Setup
 
 1. **Clone the repository in xamp htdocs folder**  
-   2.**Import database.sql (provided in the repo) into your MySQL server.** 3.**Update config/database.php with database credentials** 4.**browse http://localhost/event_management_system/**
+   2.**Import event_management.sql (provided in the repo) into your MySQL server.** 3.**Update config/database.php with database credentials** 4.**browse http://localhost/event_management_system/**
 
 For any inquiries, reach out at:
 📧 Email: nahinislam6@gmail.com
