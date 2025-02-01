@@ -11,7 +11,7 @@ This dashboard allows event organizers to track their event statistics, includin
 - **User Authentication** – Secure login to access event data.
 - **Authenticated users** – can create their own event , manage(edit,delete) event
   **Attendee Registrations** – User can register an attendee from navbar or open a event and register attendee.Attendee can book a event by themselves by browser home page
-  - **Export Attendee list** – Authenticated users can export attendee list for selected event in excel file
+ - **Export Attendee list** – Authenticated users can export attendee list for selected event in excel file
 - **Total Events & Attendees Tracking** – Get a quick overview of the number of events and total attendees.
 - **Event Capacity Management** – View available and filled event capacities.
 - **Top Event Insights** – Identify the most popular event based on attendee count.
