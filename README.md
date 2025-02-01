@@ -31,8 +31,7 @@ login credential for testing : Email: nahin6@gmail.com , Password: 123456
 - **Event List:** http://eventmanagementsystems.42web.io/events/list.php
 - **Create Event:** http://eventmanagementsystems.42web.io/events/add.php
 
-## 🛠️ site may ask for unsafe browsing to view the website since its a free hosting without any ssl certificate
-
+## 🛠️ site may ask for unsafe browsing to view the website since its a free hosting without any ssl certificate in that case please click this unsafe site from the waring. Thankyou
 
 
 ## 🛠️ Technologies Used
