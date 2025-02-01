@@ -72,7 +72,7 @@ try {
                     <td>{$attendee['email']}</td>
                     <td class='d-flex gap-2'>
                        
-                        <a href='controller/delete.php?id={$attendee['id']}' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure?\");'>Delete</a>
+                        <a href='controller/delete.php?id={$attendee['id']}&event_id={$event_id}' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure?\");'>Delete</a>
                     </td>
                   </tr>";
         }

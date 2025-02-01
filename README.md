@@ -20,6 +20,21 @@ This dashboard allows event organizers to track their event statistics, includin
 - **Optimized Queries with OOP** – Organized structure with reusable PHP classes.
 - **Secure & Scalable** – Uses prepared statements to prevent SQL injection.
 
+## 🛠️ Project Live link
+
+http://eventmanagementsystems.42web.io/
+login credential for testing : Email: nahin6@gmail.com , Password: 123456
+
+- **Login:** http://eventmanagementsystems.42web.io/auth/login.php
+- **Register:** http://eventmanagementsystems.42web.io/auth/register.php
+- **Profile:** http://eventmanagementsystems.42web.io/user/profile.php
+- **Event List:** http://eventmanagementsystems.42web.io/events/list.php
+- **Create Event:** http://eventmanagementsystems.42web.io/events/add.php
+
+## 🛠️ site may ask for unsafe browsing to view the website since its a free hosting without any ssl certificate
+
+
+
 ## 🛠️ Technologies Used
 
 - **Backend:** PHP, MySQL
