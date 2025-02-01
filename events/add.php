@@ -44,7 +44,7 @@ ob_start();
         <input type="file" class="form-control" id="image" name="image">
       </div>
       <div class="text-center">
-          <button type="submit" class="btn btn-primary w-50 text-center">Create Event</button>
+          <button type="submit" class="btn btn-success w-50 text-center">Create Event</button>
       </div>
     </form>
   </div>

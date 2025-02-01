@@ -27,7 +27,6 @@ ob_start();
       <div class="col-md-3">
         <select id="pagination-limit" class="form-select form-control">
           <option selected disabled>Paginate event</option>
-          <option value="1">1</option>
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="20">20</option>
@@ -38,6 +37,12 @@ ob_start();
       </div>
       <div class="col-md-3">
         <input type="text" id="search" class="form-control" placeholder="Search events with name or location..">
+      </div>
+      <div class="col-md-3">
+        <input type="date" id="start-date" class="form-control">
+      </div>
+      <div class="col-md-3">
+        <input type="date" id="end-date" class="form-control">
       </div>
     </div>
 
@@ -68,10 +73,13 @@ ob_start();
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       let currentPage = 1;
-      let currentLimit = 5; 
+      let currentLimit = 10;
       let search = '';
-      function loadEvents(page, limit,search) {
-        fetch(`controller/fetch.php?page=${page}&limit=${limit}&search=${encodeURIComponent(search)}`)
+      let startDate = '';
+      let endDate = '';
+
+      function loadEvents(page, limit, search, startDate, endDate) {
+        fetch(`controller/fetch.php?page=${page}&limit=${limit}&search=${encodeURIComponent(search)}&start_date=${startDate}&end_date=${endDate}`)
           .then(response => response.text())
           .then(data => {
             document.getElementById('event-list').innerHTML = data;
@@ -85,26 +93,38 @@ ob_start();
             e.preventDefault();
             let page = this.getAttribute('data-page');
             currentPage = page;
-            loadEvents(page, currentLimit,search);
+            loadEvents(page, currentLimit, search, startDate, endDate);
           });
         });
       }
 
-    
       document.getElementById('search').addEventListener('input', function () {
         search = this.value;
         currentPage = 1;
-        loadEvents(currentPage, currentLimit, search);
-    });
-      document.getElementById('pagination-limit').addEventListener('change', function () {
-        currentLimit = this.value;
-        currentPage = 1; 
-        loadEvents(currentPage, currentLimit, search);
-
+        loadEvents(currentPage, currentLimit, search, startDate, endDate);
       });
 
-      loadEvents(currentPage, currentLimit,search); 
+      document.getElementById('pagination-limit').addEventListener('change', function () {
+        currentLimit = this.value;
+        currentPage = 1;
+        loadEvents(currentPage, currentLimit, search, startDate, endDate);
+      });
+
+      document.getElementById('start-date').addEventListener('change', function () {
+        startDate = this.value;
+        currentPage = 1;
+        loadEvents(currentPage, currentLimit, search, startDate, endDate);
+      });
+
+      document.getElementById('end-date').addEventListener('change', function () {
+        endDate = this.value;
+        currentPage = 1;
+        loadEvents(currentPage, currentLimit, search, startDate, endDate);
+      });
+
+      loadEvents(currentPage, currentLimit, search, startDate, endDate);
     });
+
   </script>
 </body>
 

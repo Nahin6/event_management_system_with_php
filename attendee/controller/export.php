@@ -23,6 +23,7 @@ $stmt = $conn->prepare($query);
 $stmt->execute($params);
 
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $row['phone'] = "\t" . $row['phone']; // Prefix with tab to keep format
     fputcsv($output, $row);
 }
 

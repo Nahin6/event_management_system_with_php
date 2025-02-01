@@ -1,7 +1,7 @@
 <?php
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $pageTitle = "View Events";
 ob_start();
 include '../config/database.php';
@@ -49,12 +49,11 @@ if (isset($_GET['id'])) {
         <?php endif; ?>
         <h2 class="text-center">Attendee List for <?= htmlspecialchars($event['name']) ?></h2>
         <div class="row mb-3 mx-auto">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <select id="pagination-limit" class="form-select form-control">
                     <option selected disabled>Paginate event</option>
-                    <option value="1">1</option>
-                    <option value="2">5</option>
-                    <option value="3">10</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="50">50</option>
                     <option value="100">100</option>
@@ -63,6 +62,13 @@ if (isset($_GET['id'])) {
             </div>
             <div class="col-md-3">
                 <input type="text" id="search" class="form-control" placeholder="Search attendee with name or phone..">
+            </div>
+
+            <div class="col-md-2">
+                <input type="date" id="start-date" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <input type="date" id="end-date" class="form-control">
             </div>
             <div class="col-md-3">
                 <div class="row">
@@ -73,8 +79,6 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
 
-            </div>
-            <div class="col-md-3">
             </div>
         </div>
         <div id="no-attendees-message" class="text-center mt-4 text-info" style="display: none;"></div>
@@ -94,7 +98,6 @@ if (isset($_GET['id'])) {
             </table>
         </div>
 
-        <!-- <div id="pagination-links" class="text-center"></div> -->
     </div>
     <div class="modal fade" id="registerAttendeeModal" tabindex="-1" aria-labelledby="registerAttendeeModalLabel"
         aria-hidden="true">
@@ -141,11 +144,12 @@ if (isset($_GET['id'])) {
         var event_id = <?= isset($_GET['id']) ? $_GET['id'] : 'null'; ?>;
         document.addEventListener('DOMContentLoaded', function () {
             let currentPage = 1;
-            let currentLimit = 5;
+            let currentLimit = 10;
             let search = '';
-
+            let startDate = '';
+            let endDate = '';
             function loadAttendeeList(page, limit, search) {
-                fetch(`controller/fetch.php?event_id=${event_id}&page=${page}&limit=${limit}&search=${encodeURIComponent(search)}`)
+                fetch(`controller/fetch.php?event_id=${event_id}&page=${page}&limit=${limit}&search=${encodeURIComponent(search)}&start_date=${startDate}&end_date=${endDate}`)
                     .then(response => response.text())
                     .then(data => {
                         let attendeeContainer = document.getElementById('attendee-container');
@@ -173,7 +177,8 @@ if (isset($_GET['id'])) {
                         e.preventDefault();
                         let page = this.getAttribute('data-page');
                         currentPage = page;
-                        loadAttendeeList(page, currentLimit, search);
+                        loadAttendeeList(currentPage, currentLimit, search, startDate, endDate);
+
                     });
                 });
             }
@@ -182,19 +187,32 @@ if (isset($_GET['id'])) {
             document.getElementById('search').addEventListener('input', function () {
                 search = this.value;
                 currentPage = 1;
-                loadAttendeeList(currentPage, currentLimit, search);
+                loadAttendeeList(currentPage, currentLimit, search, startDate, endDate);
+
             });
 
             document.getElementById('pagination-limit').addEventListener('change', function () {
                 currentLimit = this.value;
                 currentPage = 1;
-                loadAttendeeList(currentPage, currentLimit, search);
+                loadAttendeeList(currentPage, currentLimit, search, startDate, endDate);
+
             });
             document.getElementById('export-attendees').addEventListener('click', function () {
                 let event_id = <?= isset($_GET['id']) ? $_GET['id'] : 'null'; ?>;
                 let search = document.getElementById('search').value;
 
                 window.location.href = `controller/export.php?event_id=${event_id}&search=${encodeURIComponent(search)}`;
+            });
+            document.getElementById('start-date').addEventListener('change', function () {
+                startDate = this.value;
+                currentPage = 1;
+                loadAttendeeList(currentPage, currentLimit, search, startDate, endDate);
+            });
+
+            document.getElementById('end-date').addEventListener('change', function () {
+                endDate = this.value;
+                currentPage = 1;
+                loadAttendeeList(currentPage, currentLimit, search, startDate, endDate);
             });
             document.getElementById('registerAttendeeForm').addEventListener('submit', function (e) {
                 e.preventDefault();
@@ -210,8 +228,7 @@ if (isset($_GET['id'])) {
                         if (resp.success) {
                             toastr.success(resp.message);
                             document.getElementById('registerAttendeeForm').reset();
-                            loadAttendeeList(currentPage, currentLimit, search);
-
+                            loadAttendeeList(currentPage, currentLimit, search, startDate, endDate);
                             let modal = document.getElementById('registerAttendeeModal');
                             let bootstrapModal = bootstrap.Modal.getInstance(modal);
                             if (bootstrapModal) {
@@ -234,7 +251,8 @@ if (isset($_GET['id'])) {
                 positionClass: "toast-top-right",
                 timeOut: 3000
             };
-            loadAttendeeList(currentPage, currentLimit, search);
+            loadAttendeeList(currentPage, currentLimit, search, startDate, endDate);
+
         });
 
     </script>

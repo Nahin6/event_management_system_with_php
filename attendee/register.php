@@ -66,7 +66,7 @@ try {
           <div id="event-error" class="error-text"></div>
       </div>
       <div class="text-center">
-          <button type="submit" class="btn btn-primary w-50 text-center">Submit</button>
+          <button type="submit" class="btn btn-success w-50 text-center">Submit</button>
       </div>
     </form>
   </div>

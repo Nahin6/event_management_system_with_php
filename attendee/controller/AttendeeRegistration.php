@@ -35,10 +35,8 @@ class AttendeeRegistration
             if ($event['current_capacity'] >= $event['max_capacity']) {
                 throw new Exception("Sorry, the event is fully booked!");
             }
-
             // Register attendee
             $this->registerAttendee($name, $phone, $email, $event_id);
-
             // Update event capacity
             $this->updateEventCapacity($event_id, $event['current_capacity'] + 1);
 
@@ -46,10 +44,11 @@ class AttendeeRegistration
 
             // Handle response based on request type
             if ($this->submitType == 'ajax') {
-                ob_end_clean();
-                header('Content-Type: application/json');
-                echo json_encode(["success" => true, "message" => "Attendee registered successfully!"]);
-                exit;
+                $this->sendAjaxResponse(true, "Attendee registered successfully!");
+
+            } else if ($this->submitType == 'userAjax') {
+                $this->sendAjaxResponse(true, "Your Registration is successful, you will get notify soon");
+
             } else {
                 $this->sendResponse(true, "Attendee registered successfully!");
             }
@@ -58,11 +57,11 @@ class AttendeeRegistration
                 $this->conn->rollBack();
             }
             if ($this->submitType == 'ajax') {
+                $this->sendAjaxResponse(false, htmlspecialchars($e->getMessage()));
 
-                ob_end_clean();
-                header('Content-Type: application/json');
-                echo json_encode(["success" => false, "message" => htmlspecialchars($e->getMessage())]);
-                exit;
+            } else if ($this->submitType == 'userAjax') {
+                $this->sendAjaxResponse(false, htmlspecialchars($e->getMessage()));
+
             } else {
                 $this->sendResponse(false, $e->getMessage());
             }
@@ -113,6 +112,13 @@ class AttendeeRegistration
             $_SESSION['error'] = htmlspecialchars($message);
         }
         header("Location: ../register.php");
+        exit;
+    }
+    private function sendAjaxResponse($success, $message)
+    {
+        ob_end_clean();
+        header('Content-Type: application/json');
+        echo json_encode(["success" => $success, "message" => $message]);
         exit;
     }
 }
