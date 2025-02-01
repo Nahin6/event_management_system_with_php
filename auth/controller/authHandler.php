@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . '/event_management_system/config/database.php';
+include '../../config/database.php';
 
 session_start();
 
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user'] = $user;
-            header("Location: /event_management_system/user/dashboard.php");
+            header("Location: ../../user/dashboard.php");
         } else {
             $_SESSION['error'] = 'Invalid email or password. Please try again.';
             header("Location: ../login.php");

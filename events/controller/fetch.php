@@ -44,7 +44,7 @@ try {
     $totalEvents = $totalStmt->fetchColumn();
     $totalPages = ceil($totalEvents / $limit);
 
-    $sql = "SELECT events.id, events.name, events.location, events.max_capacity, events.image, users.username AS created_by 
+    $sql = "SELECT events.id, events.name, events.location, events.max_capacity,events.current_capacity, events.image, users.username AS created_by 
             FROM events 
             JOIN users ON events.created_by = users.id
             $conditions
@@ -69,6 +69,7 @@ try {
                     <td>{$event['name']}</td>
                     <td>{$event['location']}</td>
                     <td>{$event['max_capacity']}</td>
+                    <td>{$event['current_capacity']}</td>
                     <td><img src='./uploads/events/{$event['image']}' alt='Event Image' width='50'></td>
                     <td class='d-flex gap-2'>
                         <a href='edit.php?id={$event['id']}' class='btn btn-primary btn-sm'>Edit</a>

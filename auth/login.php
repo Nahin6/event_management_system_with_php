@@ -42,6 +42,7 @@
           <input type="password" class="form-control" id="password" name="password" placeholder="********">
           <div id="password-error" class="error-text"></div>
         </div>
+       
         <?php if (isset($_SESSION['error'])): ?>
           <div class="login-error-text"><?php echo $_SESSION['error']; ?></div>
           <?php unset($_SESSION['error']); ?>

@@ -54,6 +54,7 @@ ob_start();
             <th>Name</th>
             <th>Location</th>
             <th>Capacity</th>
+            <th>Enrolled</th>
             <th>Image</th>
             <th>Actions</th>
           </tr>
