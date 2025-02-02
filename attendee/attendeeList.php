@@ -84,7 +84,7 @@ if (isset($_GET['id'])) {
         <div id="no-attendees-message" class="text-center mt-4 text-info" style="display: none;"></div>
 
         <div id="attendee-container" class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-centered table-bordered table-striped table-hover">
                 <thead class="thead-dark">
                     <tr>
                         <th>No</th>

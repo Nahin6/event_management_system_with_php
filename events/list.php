@@ -47,7 +47,7 @@ ob_start();
     </div>
 
     <div class="table-responsive">
-      <table class="table table-bordered">
+      <table class="table table-centered table-bordered table-striped table-hover">
         <thead class="thead-dark">
           <tr>
             <th>ID</th>
