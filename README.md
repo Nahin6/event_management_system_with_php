@@ -11,7 +11,7 @@ This dashboard allows event organizers to track their event statistics, includin
 - **User Authentication** – Secure login to access event data.
 - **Authenticated users** – can create their own event , manage(edit,delete) event
   **Attendee Registrations** – User can register an attendee from navbar or open a event and register attendee.Attendee can book a event by themselves by browser home page
-  - **Export Attendee list** – Authenticated users can export attendee list for selected event in excel file
+ - **Export Attendee list** – Authenticated users can export attendee list for selected event in excel file
 - **Total Events & Attendees Tracking** – Get a quick overview of the number of events and total attendees.
 - **Event Capacity Management** – View available and filled event capacities.
 - **Top Event Insights** – Identify the most popular event based on attendee count.
@@ -31,8 +31,7 @@ login credential for testing : Email: nahin6@gmail.com , Password: 123456
 - **Event List:** http://eventmanagementsystems.42web.io/events/list.php
 - **Create Event:** http://eventmanagementsystems.42web.io/events/add.php
 
-## 🛠️ site may ask for unsafe browsing to view the website since its a free hosting without any ssl certificate
-
+## 🛠️ site may ask for unsafe browsing to view the website since its a free hosting without any ssl certificate in that case please click this unsafe site from the waring. Thankyou
 
 
 ## 🛠️ Technologies Used
