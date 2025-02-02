@@ -24,7 +24,7 @@ ob_start();
     <?php endif; ?>
     <h2 class="text-center">Events List</h2>
     <div class="row mb-3 mx-auto">
-      <div class="col-md-3">
+      <div class="col-md-3 mt-1">
         <select id="pagination-limit" class="form-select form-control">
           <option selected disabled>Paginate event</option>
           <option value="5">5</option>
@@ -35,13 +35,13 @@ ob_start();
           <option value="200">200</option>
         </select>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 mt-1">
         <input type="text" id="search" class="form-control" placeholder="Search events with name or location..">
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 mt-1">
         <input type="date" id="start-date" class="form-control">
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 mt-1">
         <input type="date" id="end-date" class="form-control">
       </div>
     </div>

@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$pageTitle = "View Events";
+$pageTitle = "Event Attendee list";
 ob_start();
 include '../config/database.php';
 
@@ -49,7 +49,7 @@ if (isset($_GET['id'])) {
         <?php endif; ?>
         <h2 class="text-center">Attendee List for <?= htmlspecialchars($event['name']) ?></h2>
         <div class="row mb-3 mx-auto">
-            <div class="col-md-2">
+            <div class="col-md-2 mt-1">
                 <select id="pagination-limit" class="form-select form-control">
                     <option selected disabled>Paginate event</option>
                     <option value="5">5</option>
@@ -60,20 +60,20 @@ if (isset($_GET['id'])) {
                     <option value="200">200</option>
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 mt-1">
                 <input type="text" id="search" class="form-control" placeholder="Search attendee with name or phone..">
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-2 mt-1">
                 <input type="date" id="start-date" class="form-control">
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 mt-1">
                 <input type="date" id="end-date" class="form-control">
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 mt-1">
                 <div class="row">
-                    <div class="col-md-3"> <button class="btn btn-primary " id="export-attendees">Export</button></div>
-                    <div class="col-md-9">
+                    <div class="col-md-3 col-6 mt-1"> <button class="btn btn-primary " id="export-attendees">Export</button></div>
+                    <div class="col-md-9 col-6 mt-1">
                         <button class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#registerAttendeeModal">Register attendee</button>
                     </div>
@@ -235,7 +235,7 @@ if (isset($_GET['id'])) {
                                 bootstrapModal.hide();
                             }
                         } else {
-                            toastr.error('Error: ' + resp.message);
+                            toastr.error(resp.message);
                         }
                     })
                     .catch(error => {
